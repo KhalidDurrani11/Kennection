@@ -1,10 +1,13 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { SOCIAL } from '../constants';
+import { EASE_OUT } from '../lib/motion';
 
 type FormStatus = 'idle' | 'missing' | 'sent';
 
 export default function Contact() {
+  const reduce = useReducedMotion();
   const [formStatus, setFormStatus] = React.useState<FormStatus>('idle');
   const [newsletterStatus, setNewsletterStatus] = React.useState<'idle' | 'sent'>('idle');
 
@@ -41,12 +44,22 @@ export default function Contact() {
     <div className="pt-28 sm:pt-32 md:pt-40">
       <section className="px-4 sm:px-6 md:px-24 mb-20 md:mb-32">
         <div className="max-w-7xl mx-auto">
-          <span className="text-[10px] tracking-[0.4em] text-brand-gold uppercase block mb-6 md:mb-8 font-bold">
+          <motion.span
+            className="text-[10px] tracking-[0.38em] text-brand-gold uppercase block mb-6 md:mb-8 font-semibold"
+            initial={reduce ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: EASE_OUT }}
+          >
             Initiate dialogue
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif leading-[0.9] tracking-tighter text-white mb-10 md:mb-16">
+          </motion.span>
+          <motion.h1
+            className="text-4xl sm:text-6xl md:text-8xl lg:text-[6.5rem] font-serif leading-[0.92] tracking-tight text-white mb-10 md:mb-16"
+            initial={reduce ? false : { opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.06, ease: EASE_OUT }}
+          >
             Let&apos;s create
-          </h1>
+          </motion.h1>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
             <div className="md:col-span-7">
               <p className="text-brand-muted text-lg sm:text-xl md:text-2xl font-light leading-relaxed max-w-2xl">
@@ -59,7 +72,13 @@ export default function Contact() {
 
       <section className="px-4 sm:px-6 md:px-24 pb-24 md:pb-40">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
-          <div className="md:col-span-7 bg-white/5 p-6 sm:p-8 md:p-12">
+          <motion.div
+            className="md:col-span-7 bg-white/[0.04] border border-white/[0.08] p-6 sm:p-8 md:p-12"
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.85, ease: EASE_OUT }}
+          >
             <form className="space-y-12 md:space-y-16" onSubmit={handleSubmit} noValidate>
               {formStatus === 'missing' ? (
                 <p className="text-sm text-red-400/90" role="alert">
@@ -94,7 +113,7 @@ export default function Contact() {
                   type="text"
                   autoComplete="name"
                   required
-                  className="w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-base sm:text-lg transition-all"
+                  className="input-line w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-base sm:text-lg"
                   placeholder="Your name"
                 />
               </div>
@@ -112,7 +131,7 @@ export default function Contact() {
                   autoComplete="email"
                   inputMode="email"
                   required
-                  className="w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-base sm:text-lg transition-all"
+                  className="input-line w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-base sm:text-lg"
                   placeholder="you@example.com"
                 />
               </div>
@@ -127,23 +146,29 @@ export default function Contact() {
                   id="contact-message"
                   name="message"
                   required
-                  className="w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-base sm:text-lg transition-all resize-y min-h-[120px]"
+                  className="input-line w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-base sm:text-lg resize-y min-h-[120px]"
                   placeholder="Describe your vision..."
                   rows={4}
                 />
               </div>
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-brand-gold text-brand-dark px-10 sm:px-12 py-4 sm:py-5 text-[10px] tracking-[0.3em] uppercase font-bold hover:bg-white active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-full sm:w-auto bg-brand-gold text-brand-dark px-10 sm:px-12 py-4 sm:py-5 text-[10px] tracking-[0.3em] uppercase font-semibold hover:bg-white hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.35)] active:scale-[0.98] transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 Send message
               </button>
             </form>
-          </div>
+          </motion.div>
 
-          <div className="md:col-span-5 space-y-10 md:space-y-12">
-            <div className="relative aspect-square max-h-[min(100vw-2rem,28rem)] mx-auto md:max-h-none overflow-hidden group">
-              <div className="absolute inset-0 bg-white/5 flex items-center justify-center">
+          <motion.div
+            className="md:col-span-5 space-y-10 md:space-y-12"
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.85, delay: 0.1, ease: EASE_OUT }}
+          >
+            <div className="relative aspect-square max-h-[min(100vw-2rem,28rem)] mx-auto md:max-h-none overflow-hidden group border border-white/[0.08]">
+              <div className="absolute inset-0 bg-white/[0.04] flex items-center justify-center">
                 <img
                   src="https://picsum.photos/seed/map/800/800?grayscale"
                   alt=""
@@ -187,7 +212,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="bg-white/5 p-6 sm:p-8">
+              <div className="bg-white/[0.04] border border-white/[0.08] p-6 sm:p-8">
                 <span className="text-[10px] tracking-[0.2em] text-brand-gold uppercase block mb-4 font-bold">
                   Direct contact
                 </span>
@@ -212,13 +237,19 @@ export default function Contact() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-brand-black border-y border-white/5">
+      <motion.section
+        className="py-20 md:py-32 bg-brand-black border-y border-white/[0.06]"
+        initial={reduce ? false : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.85, ease: EASE_OUT }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-24 text-center">
-          <h2 className="text-3xl sm:text-5xl font-serif text-white mb-6 md:mb-8">Weekly perspectives</h2>
+          <h2 className="text-3xl sm:text-5xl font-serif text-white mb-6 md:mb-8 tracking-tight">Weekly perspectives</h2>
           <p className="text-brand-muted max-w-xl mx-auto mb-10 md:mb-12 font-light text-sm sm:text-base leading-relaxed px-2">
             Notes on visual craft and process. Wire this block to your newsletter tool when you are ready.
           </p>
@@ -242,7 +273,7 @@ export default function Contact() {
                     type="email"
                     autoComplete="email"
                     inputMode="email"
-                    className="w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-sm"
+                    className="input-line w-full bg-transparent border-0 border-b border-white/20 py-4 px-0 text-white focus:outline-none focus:border-brand-gold placeholder:text-brand-muted/30 text-sm"
                     placeholder="Your email"
                   />
                 </div>
@@ -256,7 +287,7 @@ export default function Contact() {
             )}
           </form>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
