@@ -19,13 +19,21 @@ export default function Portfolio() {
       <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
         <div className="max-w-3xl">
           <p className="text-[10px] tracking-[0.3em] uppercase text-brand-gold mb-6 font-medium">Archive 01 — 24</p>
-          <h1 className="text-6xl md:text-8xl font-serif tracking-tight text-white leading-[0.9]">Selected Works</h1>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif tracking-tight text-white leading-[0.9]">Selected Works</h1>
         </div>
-        <div className="flex flex-wrap gap-x-10 gap-y-4 border-b border-white/10 pb-4">
-          <button className="text-[10px] tracking-[0.2em] uppercase text-white border-b border-brand-gold">All</button>
-          <button className="text-[10px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-gold transition-colors">Photography</button>
-          <button className="text-[10px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-gold transition-colors">Videography</button>
-          <button className="text-[10px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-gold transition-colors">Branding</button>
+        <div className="flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-3 sm:gap-y-4 border-b border-white/10 pb-4" role="tablist" aria-label="Filter works">
+          <button type="button" className="text-[10px] tracking-[0.2em] uppercase text-white border-b border-brand-gold pb-1">
+            All
+          </button>
+          <button type="button" className="text-[10px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-gold transition-colors pb-1">
+            Photography
+          </button>
+          <button type="button" className="text-[10px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-gold transition-colors pb-1">
+            Videography
+          </button>
+          <button type="button" className="text-[10px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-gold transition-colors pb-1">
+            Branding
+          </button>
         </div>
       </div>
 
@@ -56,7 +64,10 @@ export default function Portfolio() {
 
       {/* Load More */}
       <div className="mt-32 flex justify-center">
-        <button className="group relative px-12 py-5 bg-brand-gold text-brand-dark font-bold text-xs tracking-[0.3em] uppercase transition-all duration-300 active:scale-95">
+        <button
+          type="button"
+          className="group relative px-8 sm:px-12 py-4 sm:py-5 bg-brand-gold text-brand-dark font-bold text-xs tracking-[0.3em] uppercase transition-all duration-300 active:scale-95"
+        >
           Explore More Archive
           <div className="absolute inset-0 border border-brand-gold translate-x-2 translate-y-2 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform"></div>
         </button>

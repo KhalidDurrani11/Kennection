@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Camera, Video, Sparkles, Share2, Eye, Layout as LayoutIcon, Film, ArrowRight } from 'lucide-react';
+import { Camera, Video, Sparkles, Share2, Layout as LayoutIcon, ArrowRight } from 'lucide-react';
 
 export default function Services() {
   const services = [
@@ -30,7 +31,7 @@ export default function Services() {
       <section className="px-6 md:px-24 mb-32">
         <div className="max-w-4xl">
           <span className="text-brand-gold font-medium text-[10px] tracking-[0.4em] uppercase block mb-6">Capabilities</span>
-          <h1 className="font-serif text-6xl md:text-8xl tracking-tighter leading-none text-white mb-12">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-8xl tracking-tighter leading-none text-white mb-8 md:mb-12">
             Our Expertise
           </h1>
           <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl font-light">
@@ -42,7 +43,7 @@ export default function Services() {
       {/* Main Services */}
       <section className="px-6 md:px-12 space-y-32 md:space-y-64">
         {services.map((s) => (
-          <div key={s.id} className={`grid md:grid-cols-12 gap-12 items-center ${s.layout === 'reverse' ? 'md:flex-row-reverse' : ''}`}>
+          <div key={s.id} className="grid md:grid-cols-12 gap-12 items-center">
             <motion.div 
               initial={{ opacity: 0, x: s.layout === 'reverse' ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -115,16 +116,19 @@ export default function Services() {
 
         {/* Bento Style Service */}
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2 bg-white/5 p-16 flex flex-col justify-center">
+          <div className="md:col-span-2 bg-white/5 p-8 sm:p-12 md:p-16 flex flex-col justify-center">
             <div className="max-w-md">
               <Share2 className="text-brand-gold mb-6" size={40} strokeWidth={1} />
               <h2 className="font-serif text-4xl text-white mb-4">Social Media</h2>
               <p className="text-brand-muted font-light leading-relaxed mb-8">
                 Strategic presence in the digital noise. We create viral-ready content that maintains the prestige of your brand while maximizing engagement.
               </p>
-              <button className="inline-flex items-center gap-2 text-brand-gold text-[10px] tracking-[0.2em] font-bold group">
-                VIEW STRATEGY <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
-              </button>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 text-brand-gold text-[10px] tracking-[0.2em] font-bold group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm"
+              >
+                Start a project <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+              </Link>
             </div>
           </div>
           <div className="md:col-span-1 overflow-hidden h-full min-h-[400px]">
@@ -140,7 +144,7 @@ export default function Services() {
         {/* Final Cards */}
         <div className="space-y-12">
           <div className="bg-brand-black grid md:grid-cols-2 group">
-            <div className="p-16 flex flex-col justify-center order-2 md:order-1">
+            <div className="p-8 sm:p-12 md:p-16 flex flex-col justify-center order-2 md:order-1">
               <h3 className="font-serif text-3xl text-white mb-4">Event Coverage</h3>
               <p className="text-brand-muted font-light leading-relaxed mb-8">
                 High-profile gatherings documented with journalistic integrity and editorial flair. We capture the essence of the elite.
@@ -165,7 +169,7 @@ export default function Services() {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="p-16 flex flex-col justify-center">
+            <div className="p-8 sm:p-12 md:p-16 flex flex-col justify-center">
               <h3 className="font-serif text-3xl text-white mb-4">Commercial Production</h3>
               <p className="text-brand-muted font-light leading-relaxed mb-8">
                 Scale without compromise. From concept to broadcast, we deliver high-value assets for global campaigns.
@@ -178,10 +182,15 @@ export default function Services() {
 
       {/* CTA */}
       <section className="py-64 px-6 text-center bg-brand-black mt-32">
-        <h2 className="font-serif text-5xl md:text-7xl text-white mb-12 tracking-tight">Ready to begin?</h2>
-        <button className="border border-brand-gold px-12 py-5 text-brand-gold font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-brand-gold hover:text-brand-dark transition-all duration-500">
-          INITIATE PROJECT
-        </button>
+        <h2 className="font-serif text-3xl sm:text-5xl md:text-7xl text-white mb-8 md:mb-12 tracking-tight px-2">
+          Ready to begin?
+        </h2>
+        <Link
+          to="/contact"
+          className="inline-block border border-brand-gold px-10 sm:px-12 py-4 sm:py-5 text-brand-gold font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-brand-gold hover:text-brand-dark transition-all duration-500 text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
+        >
+          Initiate project
+        </Link>
       </section>
     </div>
   );

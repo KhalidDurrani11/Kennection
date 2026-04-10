@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex items-center justify-center">
+      <section className="relative min-h-[100dvh] min-h-screen w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://picsum.photos/seed/monolith-hero/1920/1080?grayscale" 
@@ -27,12 +27,12 @@ export default function Home() {
           <span className="block text-[12px] tracking-[0.5em] uppercase text-brand-gold mb-8 font-medium">
             ESTABLISHED MMXXIV
           </span>
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-serif font-bold text-white tracking-tighter mb-12 leading-[0.9] text-glow">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-serif font-bold text-white tracking-tighter mb-8 sm:mb-12 leading-[0.9] text-glow px-1">
             WE CRAFT <br /> VISUAL <br /> NARRATIVES
           </h1>
           <Link 
             to="/portfolio"
-            className="inline-block px-12 py-5 bg-brand-gold text-brand-dark font-bold text-[12px] tracking-[0.2em] uppercase hover:bg-white transition-all duration-300 transform hover:-translate-y-1"
+            className="inline-block px-8 sm:px-12 py-4 sm:py-5 bg-brand-gold text-brand-dark font-bold text-[11px] sm:text-[12px] tracking-[0.2em] uppercase hover:bg-white transition-all duration-300 transform hover:-translate-y-1 text-center max-w-[min(100%,20rem)]"
           >
             View Portfolio
           </Link>
@@ -150,7 +150,9 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <span className="text-[12px] tracking-[0.5em] text-brand-gold uppercase mb-6 block font-medium">FEATURED WORK</span>
-            <h3 className="text-4xl md:text-8xl font-serif text-white tracking-tighter mb-8">THE AEON PROJECT</h3>
+            <h3 className="text-3xl sm:text-4xl md:text-8xl font-serif text-white tracking-tighter mb-6 md:mb-8 px-2">
+              THE AEON PROJECT
+            </h3>
             <Link 
               to="/portfolio"
               className="inline-block px-10 py-4 bg-transparent border border-brand-gold/30 text-brand-gold text-[10px] tracking-[0.2em] uppercase hover:bg-brand-gold hover:text-brand-dark transition-all duration-500"
